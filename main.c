@@ -1,9 +1,11 @@
-#include "gettime.h"
+#include "init_task.h"
+#include "task.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-    char *timestr = time_string();
+    struct Task *init = get_init_task();
 
-    printf("Satellite starting at: %s", timestr);
+    run(init);
     return 0;
 }
