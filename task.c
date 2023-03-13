@@ -8,6 +8,7 @@ void task_log(char *name, char *verbed, char *timestr) {
     printf("INFO: Task %s %s at %s", name, verbed, timestr);
 }
 
+/* Build a task and allocate memory */
 struct Task *build_task(char *name) {
     struct Task *t = malloc(sizeof(struct Task));
     t->name = name;
@@ -15,6 +16,7 @@ struct Task *build_task(char *name) {
     return t;
 }
 
+/* Register the start time of a task */
 void start_task(struct Task *t) {
     time(&t->start);
     struct tm *timeinfo;
@@ -22,6 +24,7 @@ void start_task(struct Task *t) {
     task_log(t->name, "started", asctime(timeinfo));
 }
 
+/* Register the end time of a task */
 void end_task(struct Task *t) {
     time(&t->end);
     struct tm *timeinfo;
@@ -30,6 +33,7 @@ void end_task(struct Task *t) {
     t->finished = 1;
 }
 
+/* Run the task */
 int run(struct Task *t) {
     start_task(t);
     t->failed = t->run();
