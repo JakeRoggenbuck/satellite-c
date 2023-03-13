@@ -27,6 +27,7 @@ void LOGT(enum Severity s, time_t t, char *msg) {
     char buf[300];
     sprintf(buf, "%s: [%s] %s\n", severity_name(s), ts, msg);
     fputs(buf, LOGFILE);
+	fflush(LOGFILE);
 
 #ifdef DISPLAY_LOGS
     printf("%s", buf);
