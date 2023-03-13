@@ -21,5 +21,4 @@ void display(struct Task *t);
 void start_task(struct Task *t);
 void end_task(struct Task *t);
 
-
 char *timestr(time_t ta);

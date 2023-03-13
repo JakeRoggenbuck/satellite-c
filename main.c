@@ -1,5 +1,6 @@
 #include "health_check_task.h"
 #include "init_task.h"
+#include "log.h"
 #include "task.h"
 #include "task_list.h"
 #include <stdio.h>
@@ -35,12 +36,9 @@ int main() {
     run_tasks(task_list);
 
     while (1) {
-        create_wake_up_tasks(task_list);
-        run_tasks(task_list);
-
-        printf("INFO: Sleeping...\n");
+        LOG(INFO, "Sleeping...");
         sleep(SLEEP_TIME);
-        printf("INFO: Woke up...\n");
+        LOG(INFO, "Woke up...");
     }
     return 0;
 }
