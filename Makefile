@@ -1,2 +1,2 @@
 main.o:
-	gcc -Wall -Werror -Wextra *.c -o satellite
+	gcc -Wall -Wextra *.c -o satellite

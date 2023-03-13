@@ -4,7 +4,8 @@
 
 enum Severity { INFO, DEBUG, WARNING, ERROR, FATAL };
 
-FILE *open_log(char *filepath);
+void open_log();
+void close_log();
 
 void LOGT(enum Severity s, time_t t, char *msg);
 void LOG(enum Severity s, char *msg);

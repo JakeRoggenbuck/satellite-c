@@ -1,8 +1,10 @@
+#include "log.h"
 #include "task.h"
 #include <stdio.h>
 
 int run_init_task() {
     printf("Init!\n");
+    open_log();
     return 0;
 }
 

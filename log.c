@@ -6,25 +6,27 @@
 #define DISPLAY_LOGS
 
 char *LOGPATH = "logfile.txt";
+FILE *LOGFILE;
 
-FILE *open_log(char *filepath) {
-    static FILE *p;
-    p = fopen(filepath, "a");
-    return p;
-}
+void open_log() { LOGFILE = fopen(LOGPATH, "a"); }
+
+void close_log() { fclose(LOGFILE); }
 
 void LOGT(enum Severity s, time_t t, char *msg) {
+	// LOGFILE has not been opened yet
+    if (LOGFILE == NULL) {
+        return;
+    }
+
     if (s == FATAL) {
         exit(1);
     }
 
-    FILE *logfile = open_log(LOGPATH);
     char *ts = timestr(t);
 
     char buf[300];
     sprintf(buf, "%s: [%s] %s\n", severity_name(s), ts, msg);
-    fputs(buf, logfile);
-    fclose(logfile);
+    fputs(buf, LOGFILE);
 
 #ifdef DISPLAY_LOGS
     printf("%s", buf);

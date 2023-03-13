@@ -6,6 +6,7 @@
 
 struct Config {
     int sleeptime;
+	char* batterypath;
 };
 
 int handler(void *user, const char *section, const char *name,

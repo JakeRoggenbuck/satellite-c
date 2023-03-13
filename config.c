@@ -14,6 +14,8 @@ int handler(void *user, const char *section, const char *name,
 #define MATCH(s, n) strcmp(section, s) == 0 && strcmp(name, n) == 0
     if (MATCH("setup", "sleeptime")) {
         pconfig->sleeptime = atoi(value);
+    } else if (MATCH("device", "batterypath")) {
+        pconfig->batterypath = strdup(value);
     } else {
         return 0;
     }
