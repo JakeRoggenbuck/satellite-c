@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// #define DISPLAY_LOGS
+
 char *LOGPATH = "logfile.txt";
 
 FILE *open_log(char *filepath) {
@@ -13,16 +15,16 @@ FILE *open_log(char *filepath) {
 
 void LOGT(enum Severity s, time_t t, char *msg) {
     FILE *logfile = open_log(LOGPATH);
-
     char *ts = timestr(t);
 
-    fputs(severity_name(s), logfile);
-    fputs(": [", logfile);
-    fputs(ts, logfile);
-    fputs("]: ", logfile);
-    fputs(msg, logfile);
-    fputs("\n", logfile);
+    char buf[300];
+    sprintf(buf, "%s: [%s] %s\n", severity_name(s), ts, msg);
+    fputs(buf, logfile);
     fclose(logfile);
+
+#ifdef DISPLAY_LOGS
+    printf("%s", buf);
+#endif
 }
 
 void LOG(enum Severity s, char *msg) {

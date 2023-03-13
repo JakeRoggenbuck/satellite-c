@@ -9,6 +9,7 @@
 char *task_log(struct Task *t, char *verbed) {
     char *buf = malloc(200 * sizeof(char));
     sprintf(buf, "Task \"%s\" %s", t->name, verbed);
+
     return buf;
 }
 
