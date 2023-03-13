@@ -5,7 +5,7 @@
 #include <time.h>
 
 void task_log(char *name, char *verbed, char *timestr) {
-    printf("Task %s %s at %s", name, verbed, timestr);
+    printf("INFO: Task %s %s at %s", name, verbed, timestr);
 }
 
 struct Task *build_task(char *name) {
