@@ -7,7 +7,7 @@ struct Task {
     time_t end;
 
     int finished;
-	int failed;
+    int failed;
 
     int (*run)();
 };
@@ -15,3 +15,11 @@ struct Task {
 struct Task *build_task(char *name);
 
 int run(struct Task *t);
+
+void display(struct Task *t);
+
+void start_task(struct Task *t);
+void end_task(struct Task *t);
+
+
+char *timestr(time_t ta);
