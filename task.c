@@ -5,7 +5,7 @@
 #include <time.h>
 
 void task_log(char *name, char *verbed, char *timestr) {
-    printf("INFO: Task %s %s at %s", name, verbed, timestr);
+    printf("INFO: Task \"%s\" %s at %s", name, verbed, timestr);
 }
 
 /* Build a task and allocate memory */
