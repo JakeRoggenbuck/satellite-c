@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #pragma once
 
-enum Severity { INFO, DEBUG, WARNING, ERROR };
+enum Severity { INFO, DEBUG, WARNING, ERROR, FATAL };
 
 FILE *open_log(char *filepath);
 

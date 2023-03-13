@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// #define DISPLAY_LOGS
+#define DISPLAY_LOGS
 
 char *LOGPATH = "logfile.txt";
 
@@ -14,6 +14,10 @@ FILE *open_log(char *filepath) {
 }
 
 void LOGT(enum Severity s, time_t t, char *msg) {
+    if (s == FATAL) {
+        exit(1);
+    }
+
     FILE *logfile = open_log(LOGPATH);
     char *ts = timestr(t);
 
